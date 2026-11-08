@@ -1,0 +1,81 @@
+class_;rank;source_id;source_name;publisher;source_type;num_covid_works;works_count;works_count_2020_2022;num_cites;country_code;impact_factor;h_index;i10_index
+0p;1;15239247;Int. Journal of Env. Res. and Pub. Health;Multidisciplinary Digital Publishing Inst.;Journal;2271;60044;40640;1835122;CH;3.509594882729211;321;42866
+0p;2;2738950867;Cureus;Cureus, Inc.;Journal;1340;37948;26838;434121;US;1.1144846108727193;131;10318
+0p;3;10134376;Sustainability;Multidisciplinary Digital Publishing Inst.;Journal;1325;66680;42410;2327829;CH;5.480688057380431;301;57656
+0p;4;202381698;PLoS ONE;Public Library of Science;Journal;1273;281207;49765;12620537;US;3.217046034500357;603;235710
+0p;5;9692511;Frontiers in Psychology;Frontiers Media;Journal;1135;37133;18859;1357393;CH;3.625374855824683;311;27671
+0p;6;2739064124;Research Society and Development;Grupo de Pesquisa Metodologias em Ensino e Aprendizagem em Ciências;Journal;1067;28397;26174;70152;BR;0.34694353709752684;37;1023
+0p;7;2595931848;Frontiers in Public Health;Frontiers Media;Journal;777;12587;8513;419355;CH;3.498155476557784;176;10266
+0p;8;196734849;Scientific Reports;Nature Portfolio;Journal;770;178855;69700;8108674;GB;5.015016237280797;465;170901
+0p;9;61740008;British journal of surgery;Oxford University Press;Journal;611;44190;7578;1044353;GB;0.4912941787941788;311;15604
+0p;10;2735557189;Innovation in Aging;University of Oxford;Journal;553;23215;10629;24906;GB;0.231918839314934;48;381
+0p;11;4210179027;International Journal of Health Sciences;Universidad Tecnica de Manabi;Journal;538;9179;9260;14418;EC;0.6439169139465876;24;167
+0p;12;4210234566;Brazilian Journal of Development;Brazilian Journal of Development;Journal;512;23599;20590;27137;BR;0.4397339983374896;30;388
+0p;13;4210214101;Healthcare;Multidisciplinary Digital Publishing Inst.;Journal;460;6858;5222;183818;CH;3.4136463007709126;118;4765
+0p;14;4210187594;Journal of Physics Conference Series;IOP Publishing;Journal;453;177559;75726;813369;GB;0.5020800745498719;134;19306
+0p;15;4210177346;Brazilian Journal of Health Review;Brazilian Journal of Development;Journal;418;6956;5924;13296;BR;0.18920173267326731;25;195
+0p;16;4210226234;Vaccines;Multidisciplinary Digital Publishing Inst.;Journal;403;5844;4593;185813;CH;4.260186263096624;136;4677
+0p;17;87202501;European Psychiatry;Cambridge University Press;Journal;370;33341;4780;171191;GB;0.37888390786829496;144;2616
+0p;18;4220651900;ICERI proceedings;Int. Academy of Technology, Education and Development;Journal;367;4503;4432;7636;ES;0.11400651465798045;19;88
+0p;19;76900504;CHEST Journal;Elsevier BV;Journal;359;71225;10034;1977737;US;0.7027255440523981;410;24743
+0p;20;60865174;Journal of the American College of Cardiology;Elsevier BV;Journal;348;111483;15445;3191516;US;1.269144374106596;619;22065
+1-50p;1;15239247;Int. Journal of Env. Res. and Pub. Health;Multidisciplinary Digital Publishing Inst.;Journal;2014;60044;40640;1835122;CH;3.509594882729211;321;42866
+1-50p;2;202381698;PLoS ONE;Public Library of Science;Journal;1618;281207;49765;12620537;US;3.217046034500357;603;235710
+1-50p;3;196734849;Scientific Reports;Nature Portfolio;Journal;993;178855;69700;8108674;GB;5.015016237280797;465;170901
+1-50p;4;2595931848;Frontiers in Public Health;Frontiers Media;Journal;948;12587;8513;419355;CH;3.498155476557784;176;10266
+1-50p;5;4210226234;Vaccines;Multidisciplinary Digital Publishing Inst.;Journal;876;5844;4593;185813;CH;4.260186263096624;136;4677
+1-50p;6;2735126445;Open Forum Infectious Diseases;Oxford University Press;Journal;811;21569;7537;122132;GB;1.1104024943310657;102;3127
+1-50p;7;2737969411;Journal of Clinical Medicine;Multidisciplinary Digital Publishing Inst.;Journal;726;23809;17893;695942;CH;3.685383699166241;189;19133
+1-50p;8;35071406;Int. Journal of Infectious Diseases;Elsevier BV;Journal;615;17454;4226;281079;NL;2.4864995178399227;172;5395
+1-50p;9;2597052008;Frontiers in Medicine;Frontiers Media;Journal;589;10082;8068;277176;CH;2.5007409602845287;149;7388
+1-50p;10;49828768;Journal of Medical Virology;Wiley;Journal;585;13057;2822;457430;US;3.3938375350140055;199;9229
+1-50p;11;79054089;BMJ Open;BMJ;Journal;563;30480;13202;936838;GB;2.5189111261872457;245;21527
+1-50p;12;2738950867;Cureus;Cureus, Inc.;Journal;547;37948;26838;434121;US;1.1144846108727193;131;10318
+1-50p;13;2595292759;Frontiers in Immunology;Frontiers Media;Journal;505;32986;17905;1712082;CH;5.383470905941098;355;31439
+1-50p;14;55776271;Viruses;Multidisciplinary Digital Publishing Inst.;Journal;501;11936;6952;420118;CH;4.3234578819367675;189;9781
+1-50p;15;4210220588;European Journal of Public Health;Oxford University Press;Journal;432;21701;7176;181764;GB;0.4782904818661672;148;3394
+1-50p;16;72350973;Clinical Infectious Diseases;Oxford University Press;Journal;414;34948;4059;2177379;US;5.7185069984447905;486;22594
+1-50p;17;4210217848;JAMA Network Open;American Medical Association;Journal;401;8274;6168;514672;US;9.486789201608271;236;9077
+1-50p;18;92766711;Frontiers in Psychiatry;Frontiers Media;Journal;374;11186;7317;386192;CH;3.403533026113671;194;8919
+1-50p;19;200437886;BMC Public Health;BioMed Central;Journal;335;21787;6731;1142777;GB;4.620154373927959;291;21028
+1-50p;20;171015910;BMC Infectious Diseases;BioMed Central;Journal;313;11660;3217;426174;GB;3.044547134935305;178;9581
+51-99p;1;15239247;Int. Journal of Env. Res. and Pub. Health;Multidisciplinary Digital Publishing Inst.;Journal;268;60044;40640;1835122;CH;3.509594882729211;321;42866
+51-99p;2;202381698;PLoS ONE;Public Library of Science;Journal;252;281207;49765;12620537;US;3.217046034500357;603;235710
+51-99p;3;72350973;Clinical Infectious Diseases;Oxford University Press;Journal;251;34948;4059;2177379;US;5.7185069984447905;486;22594
+51-99p;4;2735126445;Open Forum Infectious Diseases;Oxford University Press;Journal;238;21569;7537;122132;GB;1.1104024943310657;102;3127
+51-99p;5;189281586;Emerging infectious diseases;Centers for Disease Control and Prevention;Journal;227;13420;1788;870606;US;6.144087705559906;329;10805
+51-99p;6;35071406;Int. Journal of Infectious Diseases;Elsevier BV;Journal;192;17454;4226;281079;NL;2.4864995178399227;172;5395
+51-99p;7;2595931848;Frontiers in Public Health;Frontiers Media;Journal;173;12587;8513;419355;CH;3.498155476557784;176;10266
+51-99p;8;55776271;Viruses;Multidisciplinary Digital Publishing Inst.;Journal;168;11936;6952;420118;CH;4.3234578819367675;189;9781
+51-99p;9;196734849;Scientific Reports;Nature Portfolio;Journal;161;178855;69700;8108674;GB;5.015016237280797;465;170901
+51-99p;10;4210226234;Vaccines;Multidisciplinary Digital Publishing Inst.;Journal;158;5844;4593;185813;CH;4.260186263096624;136;4677
+51-99p;11;50690046;Eurosurveillance;European Centre for Disease Prevention and Control;Journal;153;6596;788;225967;SE;7.955156950672646;175;3603
+51-99p;12;183158886;MMWR Morbidity and Mortality Weekly Report;Centers for Disease Control and Prevention;Journal;141;3528;1190;297344;US;19.286036036036037;254;2556
+51-99p;13;64187185;Nature Communications;Nature Portfolio;Journal;138;52719;21817;7778866;GB;17.34528227874838;753;70083
+51-99p;14;79054089;BMJ Open;BMJ;Journal;132;30480;13202;936838;GB;2.5189111261872457;245;21527
+51-99p;15;49828768;Journal of Medical Virology;Wiley;Journal;124;13057;2822;457430;US;3.3938375350140055;199;9229
+51-99p;16;4210217848;JAMA Network Open;American Medical Association;Journal;114;8274;6168;514672;US;9.486789201608271;236;9077
+51-99p;17;129764719;Infection Control and Hospital Epidemiology;Cambridge University Press;Journal;112;17626;2354;345922;GB;1.6188340807174888;198;5918
+51-99p;17;27359860;Vaccine;Elsevier BV;Journal;112;29236;3206;1122598;GB;3.245507060333761;266;21658
+51-99p;19;172573765;JAMA;American Medical Association;Journal;96;258776;5290;7622846;US;9.14940917284198;1015;63570
+51-99p;20;49861241;The Lancet;Elsevier BV;Journal;95;467658;4211;10441625;NL;20.32883841968299;1210;70695
+100p;1;172573765;JAMA;American Medical Association;Journal;84;258776;5290;7622846;US;9.14940917284198;1015;63570
+100p;2;15239247;Int. Journal of Env. Res. and Pub. Health;Multidisciplinary Digital Publishing Inst.;Journal;47;60044;40640;1835122;CH;3.509594882729211;321;42866
+100p;3;35071406;Int. Journal of Infectious Diseases;Elsevier BV;Journal;43;17454;4226;281079;NL;2.4864995178399227;172;5395
+100p;4;72350973;Clinical Infectious Diseases;Oxford University Press;Journal;37;34948;4059;2177379;US;5.7185069984447905;486;22594
+100p;4;3880285;Science;American Assoc. for the Advancement of Sci.;Journal;37;375806;10324;22942182;US;20.757953723788866;1762;85016
+100p;6;202381698;PLoS ONE;Public Library of Science;Journal;36;281207;49765;12620537;US;3.217046034500357;603;235710
+100p;7;2737742028;Int. Journal of Preventive Medicine;Medknow;Journal;35;966;553;22000;IR;1.3705179282868525;61;598
+100p;7;55776271;Viruses;Multidisciplinary Digital Publishing Inst.;Journal;35;11936;6952;420118;CH;4.3234578819367675;189;9781
+100p;9;49861241;The Lancet;Elsevier BV;Journal;33;467658;4211;10441625;NL;20.32883841968299;1210;70695
+100p;10;4210220588;European Journal of Public Health;Oxford University Press;Journal;31;21701;7176;181764;GB;0.4782904818661672;148;3394
+100p;11;62468778;New England Journal of Medicine;Massachusetts Medical Society;Journal;29;122243;3534;12443736;US;31.133284777858705;1512;46237
+100p;12;129764719;Infection Control and Hospital Epidemiology;Cambridge University Press;Journal;26;17626;2354;345922;GB;1.6188340807174888;198;5918
+100p;12;31999364;Journal of Travel Medicine;Oxford University Press;Journal;26;3179;596;81947;US;3.643646408839779;96;1785
+100p;12;4210200496;Med. Journal of Dr D Y Patil Vidyapeeth;Medknow;Journal;26;1008;761;2101;IN;0.2423469387755102;13;24
+100p;12;4210226234;Vaccines;Multidisciplinary Digital Publishing Inst.;Journal;26;5844;4593;185813;CH;4.260186263096624;136;4677
+100p;16;189281586;Emerging infectious diseases;Centers for Disease Control and Prevention;Journal;24;13420;1788;870606;US;6.144087705559906;329;10805
+100p;16;2755481371;Pan African Medical Journal;African Field Epidemiology Network;Journal;24;9349;3182;78720;UG;0.9388297872340425;74;2300
+100p;16;196734849;Scientific Reports;Nature Portfolio;Journal;24;178855;69700;8108674;GB;5.015016237280797;465;170901
+100p;19;50690046;Eurosurveillance;European Centre for Disease Prevention and Control;Journal;23;6596;788;225967;SE;7.955156950672646;175;3603
+100p;19;11097115;Public Health;Elsevier BV;Journal;23;25383;1135;198756;GB;3.221052631578947;140;4127

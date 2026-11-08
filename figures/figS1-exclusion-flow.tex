@@ -1,0 +1,44 @@
+% REV-2026-11 item 7: new figure -- sample-construction flow chart (coauthors asked how many works each filter removes).
+% REV-2026-11 item 7: plain CONSORT-style layout (white boxes, thin black rules); numbers unchanged.
+% Counts from the raw May-2025 snapshot (works + works_concepts), duckdb, 2026-11-02. Final count reproduces 453,367.
+% "alone" = works failing that criterion regardless of the other filters (filters overlap, so sequential counts depend on order).
+\begin{tikzpicture}[
+  font=\sffamily\small,
+  stage/.style={draw, align=center, text width=5.6cm, inner ysep=4pt, line width=0.5pt},
+  drop/.style={draw, align=left, text width=7.8cm, inner sep=4pt, line width=0.4pt, font=\sffamily\footnotesize},
+  arr/.style={-{Stealth[length=2mm]}, line width=0.5pt},
+  sub/.style={text=black!60},
+]
+  \node[stage] (s0) {OpenAlex works, 2020--2022,\\tagged with any of the three\\COVID-19 concepts (score $>$ 0.30)\\[2pt]\textbf{n = 792,176}};
+  \node[stage, below=10mm of s0] (s1) {\textbf{n = 696,414}\enspace{\footnotesize\color{black!60}(87.9\%)}};
+  \node[stage, below=10mm of s1] (s2) {\textbf{n = 696,035}\enspace{\footnotesize\color{black!60}(87.9\%)}};
+  \node[stage, below=10mm of s2] (s3) {\textbf{n = 682,853}\enspace{\footnotesize\color{black!60}(86.2\%)}};
+  \node[stage, below=10mm of s3] (s4) {\textbf{n = 677,791}\enspace{\footnotesize\color{black!60}(85.6\%)}};
+  \node[stage, below=10mm of s4] (s5) {\textbf{n = 515,356}\enspace{\footnotesize\color{black!60}(65.1\%)}};
+  \node[stage, below=10mm of s5, line width=1pt] (s6) {Analyzed sample\\\textbf{n = 453,367}\enspace{\footnotesize\color{black!60}(57.2\%)}\\[2pt]{\footnotesize\color{black!60}362,637 articles; 41,749 preprints;\\31,643 reviews; 17,338 book chapters}};
+
+  \draw[arr] (s0) -- (s1);
+  \coordinate (m1) at ($(s0.south)!0.5!(s1.north)$);
+  \node[drop, anchor=west] (d1) at ([xshift=8mm]m1 -| s0.east) {Excluded: Not a research work type (n = 95,762)\\{\color{black!60}letter 25,373; dataset 25,137; editorial 7,285; other 37,967}};
+  \draw[arr] (m1) -- (d1.west);
+  \draw[arr] (s1) -- (s2);
+  \coordinate (m2) at ($(s1.south)!0.5!(s2.north)$);
+  \node[drop, anchor=west] (d2) at ([xshift=8mm]m2 -| s0.east) {Excluded: Retracted or paratext (n = 379)\\{\color{black!60}alone: 434 retracted; 2,768 paratext (all non-research types)}};
+  \draw[arr] (m2) -- (d2.west);
+  \draw[arr] (s2) -- (s3);
+  \coordinate (m3) at ($(s2.south)!0.5!(s3.north)$);
+  \node[drop, anchor=west] (d3) at ([xshift=8mm]m3 -| s0.east) {Excluded: No author records (n = 13,182)\\{\color{black!60}alone: 25,189}};
+  \draw[arr] (m3) -- (d3.west);
+  \draw[arr] (s3) -- (s4);
+  \coordinate (m4) at ($(s3.south)!0.5!(s4.north)$);
+  \node[drop, anchor=west] (d4) at ([xshift=8mm]m4 -| s0.east) {Excluded: More than 30 authors (n = 5,062)\\{\color{black!60}alone: 5,636}};
+  \draw[arr] (m4) -- (d4.west);
+  \draw[arr] (s4) -- (s5);
+  \coordinate (m5) at ($(s4.south)!0.5!(s5.north)$);
+  \node[drop, anchor=west] (d5) at ([xshift=8mm]m5 -| s0.east) {Excluded: Single author (n = 162,435)\\{\color{black!60}alone: 195,559}};
+  \draw[arr] (m5) -- (d5.west);
+  \draw[arr] (s5) -- (s6);
+  \coordinate (m6) at ($(s5.south)!0.5!(s6.north)$);
+  \node[drop, anchor=west] (d6) at ([xshift=8mm]m6 -| s0.east) {Excluded: No DOI (n = 61,989)\\{\color{black!60}alone: 121,803}};
+  \draw[arr] (m6) -- (d6.west);
+\end{tikzpicture}

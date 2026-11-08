@@ -1,0 +1,138 @@
+\pgfplotstableread{
+year bellwether expert newcomer total_authors
+2020 265882 53212 105569 424663
+2021 385022 64606 201488 651116
+2022 331295 56286 236063 623644
+}{\COVIDYearlyAuthorTypes}
+
+\pgfplotstableread{
+year 0p 1-50p 51-99p 100p total_works
+2020 66406 42575 7862 2691 119534
+2021 111679 54516 8252 1666 176113
+2022 106047 44692 5887 1094 157720
+}{\COVIDYearlyWorkTypes}
+
+
+% \fbox
+{
+\begin{tikzpicture}
+
+\begin{groupplot}[
+    group style={
+        group name=mygroup,
+        columns=2,
+        rows=1,
+        horizontal sep=47pt, % REV-2026-11 item 22: was 55pt; makes room for the side labels on panel B
+    },
+    xbar stacked, 
+    nodes near coords,
+    every node near coord/.append style={
+        font=\tiny\sffamily,  %yshift=-5pt, xshift=0pt, anchor=south, 
+        % REV-2026-11 item 22: zerofill so labels read 31.0 / 9.0, not 31 / 9.
+        /pgf/number format/.cd, precision=1, fixed, zerofill,
+        /pgf/number format/assume math mode=true, 
+        /tikz/.cd,
+    },
+    /pgf/bar width=10pt,
+    width=0.49\textwidth,
+    height=100pt,
+    ymin=2019.9, ymax=2022.1,
+    enlarge y limits=0.2,
+    enlarge x limits=0.001,
+    ytick={2020,2021,2022},
+    yticklabels={2020,2021,2022},
+    ytick style={draw=none},
+    xmin=0, xmax=1,
+    y dir=reverse,
+    point meta=explicit,
+    axis y line*=left,
+    axis x line*=bottom,
+    xtick scale label code/.code={},
+    xticklabel={\pgfmathparse{\tick*100}\pgfmathprintnumber{\pgfmathresult}\%},
+    % axis x line=none, 
+] 
+    \nextgroupplot[
+        legend style={
+            legend columns=-1,
+            column sep=1pt,
+            font=\fontseries{m}\selectfont\small\sffamily,
+            fill=none,
+            anchor=north east,
+            shift={(1.45em, 2em)},
+        },
+        xlabel={Authors \%},
+    ]
+        \addplot[
+            experts_new,
+        ] table[
+            y=year, x expr=\thisrow{expert}/\thisrow{total_authors},
+            meta expr=\thisrow{expert}/\thisrow{total_authors}*100,
+        ] {\COVIDYearlyAuthorTypes}; 
+        \addlegendentry{Outbreak Scientist~~}
+    
+        \addplot[
+            bellwethers_new,
+        ] table[
+            y=year, x expr=\thisrow{bellwether}/\thisrow{total_authors},
+            meta expr=\thisrow{bellwether}/\thisrow{total_authors}*100,
+        ] {\COVIDYearlyAuthorTypes};
+        \addlegendentry{Bellwether~~}
+    
+        \addplot[
+            newcomers_new,
+        ] table[
+            y=year, x expr=\thisrow{newcomer}/\thisrow{total_authors},
+            meta expr=\thisrow{newcomer}/\thisrow{total_authors}*100,
+        ] {\COVIDYearlyAuthorTypes};
+        \addlegendentry{Newcomer}
+
+    %%%%%%%%%%
+    \nextgroupplot[
+        legend style={
+            legend columns=-1,
+            column sep=1pt,
+            font=\fontseries{m}\selectfont\small\sffamily,
+            fill=none,
+            anchor=north east,
+            shift={(1em, 2em)},
+        },
+        xlabel={Works \%},
+        % REV-2026-11 item 22: let the side labels for the thin Majority/Only OS segments sit right of the bar.
+        clip=false,
+    ]
+        \addplot[0p_new] table[
+            y=year, x expr=\thisrow{0p}/\thisrow{total_works},
+            meta expr=\thisrow{0p}/\thisrow{total_works}*100,
+        ] {\COVIDYearlyWorkTypes}; 
+        \addlegendentry{No OS~~}
+
+        \addplot[50p_new] table[
+            y=year, x expr=\thisrow{1-50p}/\thisrow{total_works},
+            meta expr=\thisrow{1-50p}/\thisrow{total_works}*100,
+        ] {\COVIDYearlyWorkTypes}; 
+        \addlegendentry{Minority OS~~}
+
+        % REV-2026-11 item 22: no inline label on the thin Majority/Only OS segments (they overlapped); values printed at right.
+        \addplot[75p_new, nodes near coords={}] table[
+            y=year, x expr=\thisrow{51-99p}/\thisrow{total_works},
+            meta expr=\thisrow{51-99p}/\thisrow{total_works}*100,
+        ] {\COVIDYearlyWorkTypes}; 
+        \addlegendentry{Majority OS~~}
+
+        \addplot[100p_new, nodes near coords={}] table[
+            y=year, x expr=\thisrow{100p}/\thisrow{total_works},
+            meta expr=\thisrow{100p}/\thisrow{total_works}*100,
+        ] {\COVIDYearlyWorkTypes}; 
+        \addlegendentry{Only OS}
+        % REV-2026-11 item 22: Majority OS / Only OS shares (%), from the inline table above.
+        % REV-2026-11 item 24: side labels use the preamble's class text colours (os99text, os100text), not one-off colours.
+        \node[anchor=west, font=\tiny\sffamily, inner sep=1pt] at (axis cs:1.01,2020) {\textcolor{os99text}{6.6}\,/\,\textcolor{os100text}{2.3}};
+        \node[anchor=west, font=\tiny\sffamily, inner sep=1pt] at (axis cs:1.01,2021) {\textcolor{os99text}{4.7}\,/\,\textcolor{os100text}{0.9}};
+        \node[anchor=west, font=\tiny\sffamily, inner sep=1pt] at (axis cs:1.01,2022) {\textcolor{os99text}{3.7}\,/\,\textcolor{os100text}{0.7}};
+\end{groupplot}
+
+\node[font=\large\bfseries\sffamily] at (-2em, 7.8em) {A};
+\node[font=\large\bfseries\sffamily] at (21.9em, 7.8em) {B};
+
+\end{tikzpicture}
+}

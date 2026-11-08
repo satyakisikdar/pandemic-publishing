@@ -1,0 +1,155 @@
+% \input{data/yearly-counts}
+\pgfplotstableread{
+year topic topic_works topic_authors exp_works exp_authors
+2015 COVID 864 4620 22935 92151
+2016 COVID 858 4281 23138 96105
+2017 COVID 837 4527 22645 97785
+2018 COVID 785 4091 23766 104141
+2019 COVID 923 4801 25345 114716
+2020 COVID 119534 424663 147389 431671
+2021 COVID 176113 651116 168997 548569
+2022 COVID 157720 623644 129899 481108
+}{\COVIDyearlycounts}
+
+
+\begin{tikzpicture}
+
+\begin{scope}[shift={(15em, 8.5em)}]
+    \begin{customlegend}[ 
+        legend columns=1,
+        legend style={
+        draw=pastelwhite!50!NDblue,
+        thin,
+        fill=none,
+        scale=1.2,
+        font=\footnotesize\sffamily,
+        column sep=3pt,
+      },
+      legend cell align={left},
+      legend entries={Works,Authors},
+      ]
+        \addlegendimage{semithick, draw=oc-blue-9, fill=oc-blue-3, mark=*, scale=1.1, only marks}
+        \addlegendimage{semithick, draw=oc-grape-9, fill=oc-grape-3, mark=square*, scale=0.95, only marks}
+    \end{customlegend}
+\end{scope}
+
+\begin{groupplot}[
+    group style={
+        group name=mygroup,
+        columns=2,
+        rows=1,
+        horizontal sep=65pt,
+    },
+    width=0.47\textwidth, height=175pt,
+    axis y line*=left,
+    axis x line*=bottom, 
+    enlarge y limits=0.07,
+    /tikz/xcomb,
+    /pgf/bar width=1pt,
+    ymin=2015, ymax=2022,
+    ytick={2015,2016,2017,2018,2019,2020,2021,2022},
+    yticklabels={2015,2016,2017,2018,2019,\textbf{2020},\textbf{2021},\textbf{2022}},
+    point meta=rawx, 
+    y dir=reverse,
+    nodes near coords,
+    nodes near coords greater equal only=10,
+    nodes near coords align={horizontal},
+    nodes near coords style={font=\tiny\sffamily, yshift=0pt},
+    nodes near coords={\pgfmathprintnumber[assume math mode=true, fixed]{\pgfplotspointmeta}},
+    ytick style={draw=none},
+    yticklabel style={font=\small\sffamily},
+    xtick align=center,
+    xtick style={draw=lightgray},
+    major grid style={opacity=0.65, thin, draw=gray!60},
+    title style={font=\bfseries\sffamily\normalsize, yshift=-10pt},
+    xlabel style={font=\small\sffamily},
+    ylabel style={font=\small\sffamily},
+    xticklabel style={font=\scriptsize\sffamily},
+    xlabel={Counts},
+    unbounded coords=jump,
+    % --- FIXED TICK FORMATTING HERE ---
+    scaled x ticks=manual:{}{\pgfmathparse{#1/1000}},
+    xtick={0,200000,400000,600000},
+    % Check if the tick value is 0. If yes, omit the 'K'
+    xticklabel={\ifdim\tick pt=0pt \pgfmathprintnumber{\tick}\else\pgfmathprintnumber{\tick}K\fi},
+]
+    \nextgroupplot[
+        title={COVID-19},
+        xmin=0,
+        ytick={2015,2016,2017,2018,2019,2020,2021,2022},
+    ]        
+        \addplot[
+            works_pin, yshift=3pt, thin,
+        ] table[
+            x=topic_works,
+            y expr={\thisrow{year} < 2020 ? \thisrow{year} : NaN},
+        ] {\COVIDyearlycounts}; 
+
+        \addplot[
+            yshift=3pt, works_pin,
+            semithick,
+        ] table[
+            x=topic_works,
+            y expr={\thisrow{year} >= 2020 ? \thisrow{year} : NaN},
+        ] {\COVIDyearlycounts}; 
+        
+
+        %%%%%%%%%%
+        \addplot[
+            thin, yshift=-3pt, authors_pin,
+        ] table[
+            x=topic_authors,
+            y expr={\thisrow{year} < 2020 ? \thisrow{year} : NaN},
+        ] {\COVIDyearlycounts}; 
+
+        {
+            \addplot[
+                yshift=-3pt, semithick, authors_pin,
+            ] table[
+                x=topic_authors,
+                y expr={\thisrow{year} >= 2020 ? \thisrow{year} : NaN},
+            ] {\COVIDyearlycounts};
+        }
+
+        
+    %%%%%%
+
+    \nextgroupplot[
+        title={Outbreak Science},
+        xmin=0,
+    ]        
+        \addplot[
+            yshift=3pt, works_pin, thin,
+        ] table[
+            x=exp_works,
+            y expr={\thisrow{year} < 2020 ? \thisrow{year} : NaN},
+        ] {\COVIDyearlycounts};
+
+        {
+            \addplot[
+                yshift=3pt, semithick, works_pin,
+            ] table[
+                x=exp_works,
+                y expr={\thisrow{year} >= 2020 ? \thisrow{year} : NaN},
+            ] {\COVIDyearlycounts};
+        }        
+
+        %%%%%%%%%%
+        
+        \addplot[
+            yshift=-3pt, thin, authors_pin,
+        ] table[
+            x=exp_authors,
+            y expr={\thisrow{year} < 2020 ? \thisrow{year} : NaN},
+        ] {\COVIDyearlycounts};
+
+        {
+            \addplot[
+                yshift=-3pt, semithick, authors_pin,
+            ] table[
+                x=exp_authors,
+                y expr={\thisrow{year} >= 2020 ? \thisrow{year} : NaN},
+            ] {\COVIDyearlycounts};
+        }
+\end{groupplot}
+\end{tikzpicture}

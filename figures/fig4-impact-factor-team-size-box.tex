@@ -1,0 +1,77 @@
+\begin{comment}
+class_ count  mean   std  min   25p   50p   75p     max   IQR  lower_w  upper_w
+0p     213968 1.767 2.969   0 0.233 0.825 2.464 291.000 2.231        0   5.8105
+1-50p  110244 2.940 3.916   0 0.844 2.074 3.685 291.000 2.841        0   7.9465
+51-99p  16718 4.043 5.065   0 1.399 2.960 4.603 227.263 3.204        0   9.4090
+100p     4377 3.794 5.113   0 0.871 2.412 4.323  40.518 3.452        0   9.5010
+\end{comment}
+% REV-2026-11 item 2b: axis label renamed -- measure is OpenAlex two-year mean citedness, not the standard IF (see Methods).
+
+% REV-2026-11 item 2: N labels were stale (216K/116K/18K/5.3K); now match the boxes' sample sizes 213,968/110,244/16,718/4,377.
+\begin{tikzpicture}
+    \begin{axis}[
+        width=0.5\textwidth,
+        height=200pt,
+        xlabel={Journal Two-Year Mean Citedness},
+        xmin=-0.5, xmax=15,
+        ymin=0.5, ymax=4.25,
+        xtick distance=3,
+        boxplot/variable width,
+        ytick={1, 2, 3, 4},
+        yticklabels={{No OS\\N=214K},{Minority OS\\N=110K},{Majority OS\\N=16.7K},{Only OS\\N=4.4K}},
+        yticklabel style={align=center},
+        xmajorgrids,
+        grid style={draw opacity=0.5},
+        axis x line=bottom,
+        axis y line=left,
+        % title={Whiskers at 1.5xIQR w/o outliers},
+    ]
+    % no exp
+    \addplot [0p,
+        boxplot prepared={
+            lower whisker=0,
+            lower quartile=0.233,
+            median=0.825,
+            upper quartile=2.464,
+            upper whisker=5.8105,
+            sample size=213968,
+        },
+    ] coordinates{};
+
+    % minority
+    \addplot [50p,
+        boxplot prepared={
+            lower whisker=0,
+            lower quartile=0.844,
+            median=2.074,
+            upper quartile=3.685,
+            upper whisker=7.9465,
+            sample size=110244,
+        },
+    ] coordinates{};
+
+    %majority 
+    \addplot [99p,
+        boxplot prepared={
+            lower whisker=0,
+            lower quartile=1.399,
+            median=2.960,
+            upper quartile=4.603,
+            upper whisker=9.4090,
+            sample size=16718,
+        },
+    ] coordinates{};
+
+    %only OS 
+    \addplot [100p,
+        boxplot prepared={
+            lower whisker=0,
+            lower quartile=0.871,
+            median=2.412,
+            upper quartile=4.323,
+            upper whisker=9.5010,
+            sample size=4377,
+        },
+    ] coordinates{};
+\end{axis} 
+\end{tikzpicture}

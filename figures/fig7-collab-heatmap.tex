@@ -1,0 +1,250 @@
+
+% \pgfplotstableread{
+% x y count kind sum
+% 0 0 1486402 orig 19965532
+% 1 0 1994725 orig 19965532
+% 2 0 696291 orig 19965532
+% 0 1 1994725 orig 19965532
+% 1 1 6558324 orig 19965532
+% 2 1 2254913 orig 19965532
+% 0 2 696291 orig 19965532
+% 1 2 2254913 orig 19965532
+% 2 2 2028948 orig 19965532
+% }{\origCounts}
+
+% divide diagonal counts / 2 
+\pgfplotstableread{
+x y count kind sum
+0 0 759242 orig 10171294
+1 0 2038081 orig 10171294
+2 0 691976 orig 10171294
+0 1 nan orig 10171294
+1 1 3531762 orig 10171294
+2 1 2249147 orig 10171294
+0 2 nan orig 10171294
+1 2 nan orig 10171294
+2 2 901086 orig 10171294
+}{\origCounts}
+
+\pgfplotstableread{
+x y count kind sum
+0 0 281325.44 shuffled 10171294
+1 0 1958202.10 shuffled 10171294
+2 0 862307.52 shuffled 10171294
+0 1 nan shuffled 10171294
+1 1 3407579.75 shuffled 10171294
+2 1 3001101.53 shuffled 10171294
+0 2 nan shuffled 10171294
+1 2 nan shuffled 10171294
+2 2 660777.67 shuffled 10171294
+}{\shuffledCounts}
+
+
+\pgfplotstableread{
+x y count kind sum
+0 0 0.0470 shuffled 0
+1 0 0.0079 shuffled 0
+2 0 -0.0167 shuffled 0
+0 1 nan shuffled 0
+1 1 0.0122 shuffled 0
+2 1 -0.0739 shuffled 0
+0 2 nan shuffled 0
+1 2 nan shuffled 0
+2 2 0.0236 shuffled 0
+}{\diffNormCounts}
+
+% \pgfplotsset{colormap/PuOr}
+% \pgfplotsset{colormap/RdBu}
+\pgfplotsset{colormap/temp}
+% \pgfplotsset{colormap/viridis}
+% \tikzset{external/force remake}
+
+\begin{tikzpicture}[scale=1, transform shape]
+	\begin{groupplot}[
+		group style={
+			rows=1,
+			columns=3,
+            group name=mygroup,
+% 			vertical sep=12pt,
+            horizontal sep=15pt,
+			% x descriptions at=edge bottom,
+            xlabels at=edge top,
+            xticklabels at=all,
+			y descriptions at=edge left,
+		},
+		% width=0.50\textwidth,
+		width=170pt,  % height=200pt,
+        xmin=-0.5, xmax=2.5,
+        ymin=-0.5, ymax=2.5,
+        xticklabels={Outbr. Sc.,Bellwether,Newcomer},
+        yticklabels={Outbr. Sc.,Bellwether,Newcomer},
+        typeset ticklabels with strut,
+        % nodes near coords,
+        nodes near coords align={anchor=center},
+        visualization depends on={\thisrow{count} \as \myvalue},
+        % enlargelimits=false,
+        % nodes near coords={\pgfmathprintnumber[assume math mode=true]{\pgfplotspointmeta}\%},
+        % nodes near coords={\pgfmathparse{\pgfplotspointmeta}\pgfmathprintnumber[assume math mode=true]{\pgfmathresult}\%},
+        % nodes near coords={\pgfmathparse{\myvalue*100}\pgfmathprintnumber[assume math mode=true]{\pgfmathresult}\%},
+        point meta=explicit,
+        % nodes near coords style={font=\scriptsize},
+        % yticklabel={\pgfmathparse{\tick*100}\pgfmathprintnumber[assume math mode=true]{\pgfmathresult}\%},
+        nodes near coords={%
+            \pgfmathfloatparsenumber{\pgfplotspointmeta}
+            \pgfmathfloatgetflagstomacro\pgfmathresult\currentflags
+            \ifnum\currentflags=3\else
+                \pgfmathprintnumber[assume math mode=true]{\pgfplotspointmeta}\%
+            \fi
+        },
+        title style={yshift=2em, align=center, font=\large\bfseries\sffamily},
+        % enlarge y limits=false,
+        xlabel style={font=\scriptsize\sffamily,  yshift=0.5em},
+		colormap name=viridis,
+		ytick=data,
+        % colorbar,
+        tick align=outside,
+		xtick=data,
+		% xticklabel pos=top,
+        xtick style={draw=none},
+    	ytick style={draw=none, font=\scriptsize\sffamily, },
+    	xticklabel style={draw=none, font=\footnotesize\sffamily,  yshift=0.0em},
+        yticklabel style={draw=none, font=\footnotesize\sffamily, },
+		axis background/.style={fill=gray!10},
+		axis line style={draw=oc-blue-8},
+        unbounded coords=discard,
+	]
+	%%%%%%%%% Physics
+	\nextgroupplot[
+		title={A. Original},
+		ylabel={},
+        point meta min=0,
+        point meta max=40,
+        xticklabel pos=top,
+        nodes near coords style={font=\small\sffamily, /pgf/number format/.cd,fixed,fixed zerofill,precision=1},
+        % yticklabel  style={xshift=1.2em},
+	]
+	\addplot[
+		matrix plot,  % not matrix plot* 
+		draw=black, semithick,
+		fill opacity=1,
+		colorbar source,
+        % REV-2026-11 item 24: text-colour switch moved 30% -> 15%; white text on 19-30% viridis cells was 2.2-4.1:1.
+        coordinate style/.condition={\thisrow{count}/\thisrow{sum}<0.15}{white},
+        coordinate style/.condition={\thisrow{count}/\thisrow{sum}>=0.15}{black},
+        coordinate style/.condition={\thisrow{count}/\thisrow{sum}>=0.15}{black},
+		% mark=none,
+		mesh/cols=3,
+	] 
+	table[x=x, y=y, meta expr={\thisrow{count}/\thisrow{sum}*100}] {\origCounts};	
+	
+ %    %%%%%%%%%
+	\nextgroupplot[
+		title={B. Shuffled},
+		ylabel={},
+        point meta min=0,
+        point meta max=40,
+        xticklabel pos=top,
+        nodes near coords style={font=\small\sffamily, /pgf/number format/.cd,fixed,fixed zerofill,precision=1},
+        % nodes near coords style={font=\small\textsf, text=white, /pgf/number format/.cd,fixed,fixed zerofill,precision=1},
+        % yticklabel  style={xshift=1.2em},
+	]
+	\addplot[
+		matrix plot,  % not matrix plot* 
+		draw=black, semithick, 
+		fill opacity=1,
+		colorbar source,
+		% mark=none,
+		mesh/cols=3,
+        % REV-2026-11 item 24: text-colour switch moved 30% -> 15%; white text on 19-30% viridis cells was 2.2-4.1:1.
+        coordinate style/.condition={\thisrow{count}/\thisrow{sum}<0.15}{white},
+        coordinate style/.condition={\thisrow{count}/\thisrow{sum}>=0.15}{black},
+		point meta=explicit,
+	] 
+	table[x=x, y=y, meta expr={\thisrow{count}/\thisrow{sum}*100}] {\shuffledCounts};	
+
+    %%%%%%%%%%%%%%%%%%
+    \nextgroupplot[
+        xshift=10pt,
+		title={C. Difference},
+		ylabel={},
+        nodes near coords style={font=\small\sffamily, /pgf/number format/.cd,fixed,precision=1, /pgf/number format/showpos},
+        colormap name=temp,
+        point meta min=-8,
+        point meta max=8,
+        xticklabel pos=top,
+        % yticklabel  style={xshift=1.2em},
+	]
+	\addplot[
+		matrix plot,  % not matrix plot* 
+		draw=black, semithick,
+		fill opacity=1,
+		colorbar source,
+		% mark=none,
+		mesh/cols=3,
+        coordinate style/.condition={\thisrow{count}<-0.03}{white},
+        coordinate style/.condition={\thisrow{count}==nan}{none},
+	] 
+	table[x=x, y=y, meta expr={\thisrow{count}*100}] {\diffNormCounts};	
+    
+ 
+	\end{groupplot}
+ 
+\begin{scope}[shift={(1.70, -0.15)}, scale=1]
+    \pgfplotscolorbardrawstandalone[
+        colorbar horizontal,
+        point meta min=0, point meta max=40,
+        colormap name=viridis,
+        colorbar style={
+      %       x dir=reverse,
+            height=6pt,
+            xtick={0,10,20,30,40},
+            xticklabels={0\%,10\%,20\%,30\%,40\%},
+	    	% xtick={-0.12,-0.06,0,0.06,0.12}, 
+      %       xticklabels={0.12,0.06,0,-0.06,-0.12},  % need to manually 
+      %       scale=1,
+            xtick style={
+                % xshift=-0.2em,
+                draw=none,
+                /pgf/number format/.cd,
+                fixed,
+                fixed zerofill,
+                precision=0,
+                /tikz/.cd
+        	},
+      %       % scaled x ticks=false,
+      %       % xtick={-0.0389,0,0.0389}, 
+      %       % xticklabels={-0.039,0,0.039},
+            xticklabel style={font=\footnotesize\sffamily},
+            xticklabel pos=lower,
+            scaled ticks=false,
+        },
+    ]
+\end{scope}
+
+\begin{scope}[shift={(14.75, 3.35)}, scale=1]
+    \pgfplotscolorbardrawstandalone[
+        colorbar,
+        point meta min=-8, point meta max=8,
+        colormap name=temp,
+        colorbar style={
+            width=6pt,
+            height=90pt,
+            ytick style={
+                % xshift=-0.2em,
+                draw=none,
+                /pgf/number format/.cd,
+                fixed,
+                fixed zerofill,
+                precision=0,
+                /tikz/.cd
+        	},
+            ytick={-8,-4,0,4,8},
+            yticklabels={-8\%,-4\%,0\%,4\%,8\%},
+            yticklabel style={font=\footnotesize\sffamily},
+            yticklabel pos=right,
+            scaled ticks=false,
+        },
+    ]
+\end{scope}
+
+\end{tikzpicture}

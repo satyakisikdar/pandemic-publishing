@@ -1,0 +1,283 @@
+\pgfplotstableread{
+year work_type num_works num_uncited_2yrs num_cites_2yrs_median num_cites_2yrs_mean num_cites_2yrs_ci95_min num_cites_2yrs_ci95_max
+2020 0 66406 18981 3 17.212 0.46915 0.48785
+2020 50 42575 7804 7 34.854 1.4157 1.5274
+2020 99 7862 980 12 63.423 6.8698 8.0248
+2020 100 2691 460 8 59.364 9.8866 12.478
+2021 0 111679 43656 1 6.3047 0.1032 0.10721
+2021 50 54516 14370 4 12.517 0.32158 0.32589
+2021 99 8252 1469 6 18.907 1.2141 1.3685
+2021 100 1666 435 4 14.008 1.6405 1.7293
+2022 0 106047 49821 1 3.3193 0.052527 0.054287
+2022 50 44692 13878 2 6.8101 0.17775 0.1878
+2022 99 5887 1233 4 11.177 0.84155 0.90319
+2022 100 1094 397 2 8.5878 1.7916 2.1728
+}{\COVIDYearlyWorkCites}
+
+
+% \fbox
+{
+\begin{tikzpicture}
+
+\begin{groupplot}[
+    group style={
+        group name=mygroup,
+        columns=3,
+        rows=1,
+        horizontal sep=55pt,
+    },
+    xbar, 
+    /pgf/bar width=6pt,
+    width=0.33\textwidth,
+    height=175pt,
+    ymin=2019.9, ymax=2022.1,
+    enlarge y limits=0.13,
+    enlarge x limits=0.001,
+    ytick={2020,2021,2022},
+    yticklabels={2020,2021,2022},
+    ytick style={draw=none},
+    xmin=0, %xmax=1,
+    y dir=reverse,
+    point meta=explicit,
+    axis y line*=left,
+    axis x line*=bottom,
+    unbounded coords=discard,
+    nodes near coords,
+    nodes near coords align={horizontal},
+    every node near coord/.append style={
+        font=\scriptsize\sffamily,  %yshift=-5pt, xshift=0pt, anchor=south, 
+        /pgf/number format/.cd, precision=1, fixed,
+        /pgf/number format/assume math mode=true, 
+        /tikz/.cd,
+},
+] 
+    
+    %%%%%%
+    \nextgroupplot[
+        legend style={
+            legend columns=-1,
+            column sep=1pt,
+            font=\fontseries{m}\selectfont\small\sffamily,
+            fill=none,
+            anchor=south,
+            shift={(-1em, 0em)},
+        },
+        xlabel={COVID-19 Works},
+        every node near coord/.append style={
+            % text=black,
+            font=\scriptsize\sffamily\selectfont,
+            % fill=white,
+            % anchor=west,
+            % xshift=0pt,
+            /pgf/number format/.cd,
+            fixed,          % fixed-point (no scientific “×10^k”)
+            precision=0,    % three digits after the decimal
+            zerofill,        % pad with trailing zeros (e.g. 0.500)
+        },
+        xmin=0, xmax=120000,
+        scaled x ticks=base 10:-3,
+        xtick scale label code/.code={},
+        xticklabel={\pgfmathprintnumber{\tick}K},
+        % nodes near coords=false,
+        % scaled ticks=false,
+    ]
+        \addplot[
+            0p_new,
+            x filter/.expression={\thisrow{work_type} == 0 ? x : nan},
+            nodes near coords align={xshift=1.5em},
+        ] table[
+            y=year, x expr=\thisrow{num_works},
+            meta expr=\thisrow{num_works},
+        ] {\COVIDYearlyWorkCites}; 
+
+        \addplot[
+            50p_new,
+            x filter/.expression={\thisrow{work_type} == 50 ? x : nan},
+            nodes near coords align={xshift=1.5em},
+        ] table[
+            y=year, x expr=\thisrow{num_works},
+            meta expr=\thisrow{num_works},
+        ] {\COVIDYearlyWorkCites}; 
+
+        \addplot[
+            75p_new,
+            x filter/.expression={\thisrow{work_type} == 99 ? x : nan},
+            nodes near coords align={xshift=1.5em},
+        ] table[
+            y=year, x expr=\thisrow{num_works},
+            meta expr=\thisrow{num_works},
+        ] {\COVIDYearlyWorkCites}; 
+
+        \addplot[
+            100p_new,
+            x filter/.expression={\thisrow{work_type} == 100 ? x : nan},
+            nodes near coords align={xshift=1.25em},
+        ] table[
+            y=year, x expr=\thisrow{num_works},
+            meta expr=\thisrow{num_works},
+        ] {\COVIDYearlyWorkCites}; 
+    
+    %%%%%%  uncited
+    \nextgroupplot[
+        legend style={
+            legend columns=-1,
+            column sep=1pt,
+            font=\fontseries{m}\selectfont\small\sffamily,
+            fill=none,
+            anchor=south,
+            shift={(-1em, 2em)},
+        },
+        xlabel={\% Uncited Works after 2 yrs},
+        nodes near coords={\pgfmathprintnumber[assume math mode=true, fixed]{\pgfplotspointmeta}\%},
+        every node near coord/.append style={
+            % text=black,
+            font=\scriptsize\sffamily\selectfont,
+            % fill=white,
+            % anchor=west,
+            % xshift=0pt,
+            /pgf/number format/.cd,
+            fixed,          % fixed-point (no scientific “×10^k”)
+            precision=1,    % three digits after the decimal
+            % zerofill,        % pad with trailing zeros (e.g. 0.500)
+        },
+        % xmin=0, xmax=120000,
+        % scaled x ticks=base 10:-3,
+        xmin=0, xmax=90,
+        xtick scale label code/.code={},
+        xticklabel={\pgfmathprintnumber{\tick}\%},
+        % nodes near coords=false,
+        % scaled ticks=false,
+        point meta=x,
+    ]
+        \addplot[
+            0p_new,
+            x filter/.expression={\thisrow{work_type} == 0 ? x : nan},
+            nodes near coords align={xshift=1.5em},
+        ] table[
+            y=year, x expr=\thisrow{num_uncited_2yrs}/\thisrow{num_works}*100,
+            % meta expr=\thisrow{num_uncited_2yrs},
+        ] {\COVIDYearlyWorkCites}; 
+
+        \addplot[
+            50p_new,
+            x filter/.expression={\thisrow{work_type} == 50 ? x : nan},
+            nodes near coords align={xshift=1.5em},
+        ] table[
+            y=year, x expr=\thisrow{num_uncited_2yrs}/\thisrow{num_works}*100,
+        ] {\COVIDYearlyWorkCites}; 
+
+        \addplot[
+            75p_new,
+            x filter/.expression={\thisrow{work_type} == 99 ? x : nan},
+            nodes near coords align={xshift=1.5em},
+        ] table[
+            y=year, x expr=\thisrow{num_uncited_2yrs}/\thisrow{num_works}*100,
+        ] {\COVIDYearlyWorkCites}; 
+
+        \addplot[
+            100p_new,
+            x filter/.expression={\thisrow{work_type} == 100 ? x : nan},
+            nodes near coords align={xshift=1.25em},
+        ] table[
+            y=year, x expr=\thisrow{num_uncited_2yrs}/\thisrow{num_works}*100,
+        ] {\COVIDYearlyWorkCites}; 
+
+    %%%%%%
+    \nextgroupplot[
+        legend style={
+            legend columns=-1,
+            column sep=3pt,
+            font=\fontseries{m}\selectfont\small\sffamily,
+            fill=none,
+            anchor=south,
+            shift={(-20em, -18em)},
+        },
+        % REV-2026-11 item 23: each series has an invisible twin bar ending at mean + CI that carries the value label, so error bars no longer strike the labels. Explicit bar shifts (-12/-4/4/12pt = pgfplots' auto shifts for 4 series) keep twin and bar aligned.
+        xlabel={Citations after 2 years},
+        xmax=90, % REV-2026-11 item 23: room for labels past the 2020 error bars inside the axis (figure was overfull)
+        error bars/x dir=both, error bars/x explicit=true, 
+        error bars/error mark options={rotate=90, scale=0.75, thick},
+        error bars/error bar style={draw opacity=0.5},
+    ]
+                \addplot[
+            0p_new, bar shift=-12pt, nodes near coords={},
+            x filter/.expression={\thisrow{work_type} == 0 ? x : nan},
+        ] table[
+            y=year, x expr=\thisrow{num_cites_2yrs_mean},
+            meta expr=\thisrow{num_cites_2yrs_mean},
+            x error plus expr=\thisrow{num_cites_2yrs_ci95_max},
+            x error minus expr=\thisrow{num_cites_2yrs_ci95_min},
+        ] {\COVIDYearlyWorkCites};
+        \addlegendentry{No OS~~}
+        % invisible twin ending at the CI's upper end: carries the value label, so the error bar never strikes it
+        \addplot[
+            0p_new, bar shift=-12pt, draw=none, fill=none, forget plot, error bars/x dir=none,
+            x filter/.expression={\thisrow{work_type} == 0 ? x : nan},
+        ] table[
+            y=year, x expr=\thisrow{num_cites_2yrs_mean}+\thisrow{num_cites_2yrs_ci95_max},
+            meta expr=\thisrow{num_cites_2yrs_mean},
+        ] {\COVIDYearlyWorkCites};
+        \addplot[
+            50p_new, bar shift=-4pt, nodes near coords={},
+            x filter/.expression={\thisrow{work_type} == 50 ? x : nan},
+        ] table[
+            y=year, x expr=\thisrow{num_cites_2yrs_mean},
+            meta expr=\thisrow{num_cites_2yrs_mean},
+            x error plus expr=\thisrow{num_cites_2yrs_ci95_max},
+            x error minus expr=\thisrow{num_cites_2yrs_ci95_min},
+        ] {\COVIDYearlyWorkCites};
+        \addlegendentry{Minority OS~~}
+        % invisible twin ending at the CI's upper end: carries the value label, so the error bar never strikes it
+        \addplot[
+            50p_new, bar shift=-4pt, draw=none, fill=none, forget plot, error bars/x dir=none,
+            x filter/.expression={\thisrow{work_type} == 50 ? x : nan},
+        ] table[
+            y=year, x expr=\thisrow{num_cites_2yrs_mean}+\thisrow{num_cites_2yrs_ci95_max},
+            meta expr=\thisrow{num_cites_2yrs_mean},
+        ] {\COVIDYearlyWorkCites};
+        \addplot[
+            75p_new, bar shift=4pt, nodes near coords={},
+            x filter/.expression={\thisrow{work_type} == 99 ? x : nan},
+        ] table[
+            y=year, x expr=\thisrow{num_cites_2yrs_mean},
+            meta expr=\thisrow{num_cites_2yrs_mean},
+            x error plus expr=\thisrow{num_cites_2yrs_ci95_max},
+            x error minus expr=\thisrow{num_cites_2yrs_ci95_min},
+        ] {\COVIDYearlyWorkCites};
+        \addlegendentry{Majority OS~~}
+        % invisible twin ending at the CI's upper end: carries the value label, so the error bar never strikes it
+        \addplot[
+            75p_new, bar shift=4pt, draw=none, fill=none, forget plot, error bars/x dir=none,
+            x filter/.expression={\thisrow{work_type} == 99 ? x : nan},
+        ] table[
+            y=year, x expr=\thisrow{num_cites_2yrs_mean}+\thisrow{num_cites_2yrs_ci95_max},
+            meta expr=\thisrow{num_cites_2yrs_mean},
+        ] {\COVIDYearlyWorkCites};
+        \addplot[
+            100p_new, bar shift=12pt, nodes near coords={},
+            x filter/.expression={\thisrow{work_type} == 100 ? x : nan},
+        ] table[
+            y=year, x expr=\thisrow{num_cites_2yrs_mean},
+            meta expr=\thisrow{num_cites_2yrs_mean},
+            x error plus expr=\thisrow{num_cites_2yrs_ci95_max},
+            x error minus expr=\thisrow{num_cites_2yrs_ci95_min},
+        ] {\COVIDYearlyWorkCites};
+        \addlegendentry{Only OS}
+        % invisible twin ending at the CI's upper end: carries the value label, so the error bar never strikes it
+        \addplot[
+            100p_new, bar shift=12pt, draw=none, fill=none, forget plot, error bars/x dir=none,
+            x filter/.expression={\thisrow{work_type} == 100 ? x : nan},
+        ] table[
+            y=year, x expr=\thisrow{num_cites_2yrs_mean}+\thisrow{num_cites_2yrs_ci95_max},
+            meta expr=\thisrow{num_cites_2yrs_mean},
+        ] {\COVIDYearlyWorkCites};
+
+    \end{groupplot}
+    \node[font=\large\bfseries\sffamily] at (-2em, 14em) {A};
+
+    \node[font=\large\bfseries\sffamily] at (15.5em, 14em) {B};
+    
+    \node[font=\large\bfseries\sffamily] at (33em, 14em) {C};
+
+\end{tikzpicture}
+}

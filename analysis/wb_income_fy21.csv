@@ -1,0 +1,220 @@
+# World Bank income classification FY21 (July 2020-June 2021, GNI 2019), from OGHIST.xlsx:
+# https://datacatalogfiles.worldbank.org/ddh-published/0037712/DR0090754/OGHIST.xlsx ; iso2 via api.worldbank.org/v2/country
+iso2,iso3,name,fy21
+AF,AFG,Afghanistan,L
+AL,ALB,Albania,UM
+DZ,DZA,Algeria,LM
+AS,ASM,American Samoa,UM
+AD,AND,Andorra,H
+AO,AGO,Angola,LM
+AG,ATG,Antigua and Barbuda,H
+AR,ARG,Argentina,UM
+AM,ARM,Armenia,UM
+AW,ABW,Aruba,H
+AU,AUS,Australia,H
+AT,AUT,Austria,H
+AZ,AZE,Azerbaijan,UM
+BS,BHS,"Bahamas, The",H
+BH,BHR,Bahrain,H
+BD,BGD,Bangladesh,LM
+BB,BRB,Barbados,H
+BY,BLR,Belarus,UM
+BE,BEL,Belgium,H
+BZ,BLZ,Belize,UM
+BJ,BEN,Benin,LM
+BM,BMU,Bermuda,H
+BT,BTN,Bhutan,LM
+BO,BOL,Bolivia,LM
+BA,BIH,Bosnia and Herzegovina,UM
+BW,BWA,Botswana,UM
+BR,BRA,Brazil,UM
+VG,VGB,British Virgin Islands,H
+BN,BRN,Brunei Darussalam,H
+BG,BGR,Bulgaria,UM
+BF,BFA,Burkina Faso,L
+BI,BDI,Burundi,L
+CV,CPV,Cabo Verde,LM
+KH,KHM,Cambodia,LM
+CM,CMR,Cameroon,LM
+CA,CAN,Canada,H
+KY,CYM,Cayman Islands,H
+CF,CAF,Central African Republic,L
+TD,TCD,Chad,L
+JG,CHI,Channel Islands,H
+CL,CHL,Chile,H
+CN,CHN,China,UM
+CO,COL,Colombia,UM
+KM,COM,Comoros,LM
+CD,COD,"Congo, Dem. Rep.",L
+CG,COG,"Congo, Rep.",LM
+CR,CRI,Costa Rica,UM
+CI,CIV,Côte d'Ivoire,LM
+HR,HRV,Croatia,H
+CU,CUB,Cuba,UM
+CW,CUW,Curaçao,H
+CY,CYP,Cyprus,H
+CZ,CZE,Czechia,H
+DK,DNK,Denmark,H
+DJ,DJI,Djibouti,LM
+DM,DMA,Dominica,UM
+DO,DOM,Dominican Republic,UM
+EC,ECU,Ecuador,UM
+EG,EGY,"Egypt, Arab Rep.",LM
+SV,SLV,El Salvador,LM
+GQ,GNQ,Equatorial Guinea,UM
+ER,ERI,Eritrea,L
+EE,EST,Estonia,H
+SZ,SWZ,Eswatini,LM
+ET,ETH,Ethiopia,L
+FO,FRO,Faeroe Islands,H
+FJ,FJI,Fiji,UM
+FI,FIN,Finland,H
+FR,FRA,France,H
+PF,PYF,French Polynesia,H
+GA,GAB,Gabon,UM
+GM,GMB,"Gambia, The",L
+GE,GEO,Georgia,UM
+DE,DEU,Germany,H
+GH,GHA,Ghana,LM
+GI,GIB,Gibraltar,H
+GR,GRC,Greece,H
+GL,GRL,Greenland,H
+GD,GRD,Grenada,UM
+GU,GUM,Guam,H
+GT,GTM,Guatemala,UM
+GN,GIN,Guinea,L
+GW,GNB,Guinea-Bissau,L
+GY,GUY,Guyana,UM
+HT,HTI,Haiti,L
+HN,HND,Honduras,LM
+HK,HKG,"Hong Kong SAR, China",H
+HU,HUN,Hungary,H
+IS,ISL,Iceland,H
+IN,IND,India,LM
+ID,IDN,Indonesia,UM
+IR,IRN,"Iran, Islamic Rep.",UM
+IQ,IRQ,Iraq,UM
+IE,IRL,Ireland,H
+IM,IMN,Isle of Man,H
+IL,ISR,Israel,H
+IT,ITA,Italy,H
+JM,JAM,Jamaica,UM
+JP,JPN,Japan,H
+JO,JOR,Jordan,UM
+KZ,KAZ,Kazakhstan,UM
+KE,KEN,Kenya,LM
+KI,KIR,Kiribati,LM
+KP,PRK,"Korea, Dem. Rep.",L
+KR,KOR,"Korea, Rep.",H
+XK,XKX,Kosovo,UM
+KW,KWT,Kuwait,H
+KG,KGZ,Kyrgyz Republic,LM
+LA,LAO,Lao PDR,LM
+LV,LVA,Latvia,H
+LB,LBN,Lebanon,UM
+LS,LSO,Lesotho,LM
+LR,LBR,Liberia,L
+LY,LBY,Libya,UM
+LI,LIE,Liechtenstein,H
+LT,LTU,Lithuania,H
+LU,LUX,Luxembourg,H
+MO,MAC,"Macao SAR, China",H
+MG,MDG,Madagascar,L
+MW,MWI,Malawi,L
+MY,MYS,Malaysia,UM
+MV,MDV,Maldives,UM
+ML,MLI,Mali,L
+MT,MLT,Malta,H
+MH,MHL,Marshall Islands,UM
+MR,MRT,Mauritania,LM
+MU,MUS,Mauritius,H
+MX,MEX,Mexico,UM
+FM,FSM,"Micronesia, Fed. Sts.",LM
+MD,MDA,Moldova,LM
+MC,MCO,Monaco,H
+MN,MNG,Mongolia,LM
+ME,MNE,Montenegro,UM
+MA,MAR,Morocco,LM
+MZ,MOZ,Mozambique,L
+MM,MMR,Myanmar,LM
+NA,NAM,Namibia,UM
+NR,NRU,Nauru,H
+NP,NPL,Nepal,LM
+NL,NLD,Netherlands,H
+NC,NCL,New Caledonia,H
+NZ,NZL,New Zealand,H
+NI,NIC,Nicaragua,LM
+NE,NER,Niger,L
+NG,NGA,Nigeria,LM
+MK,MKD,North Macedonia,UM
+MP,MNP,Northern Mariana Islands,H
+NO,NOR,Norway,H
+OM,OMN,Oman,H
+PK,PAK,Pakistan,LM
+PW,PLW,Palau,H
+PA,PAN,Panama,H
+PG,PNG,Papua New Guinea,LM
+PY,PRY,Paraguay,UM
+PE,PER,Peru,UM
+PH,PHL,Philippines,LM
+PL,POL,Poland,H
+PT,PRT,Portugal,H
+PR,PRI,Puerto Rico,H
+QA,QAT,Qatar,H
+RO,ROU,Romania,H
+RU,RUS,Russian Federation,UM
+RW,RWA,Rwanda,L
+WS,WSM,Samoa,UM
+SM,SMR,San Marino,H
+ST,STP,São Tomé and Príncipe,LM
+SA,SAU,Saudi Arabia,H
+SN,SEN,Senegal,LM
+RS,SRB,Serbia,UM
+SC,SYC,Seychelles,H
+SL,SLE,Sierra Leone,L
+SG,SGP,Singapore,H
+SX,SXM,Sint Maarten (Dutch part),H
+SK,SVK,Slovak Republic,H
+SI,SVN,Slovenia,H
+SB,SLB,Solomon Islands,LM
+SO,SOM,Somalia,L
+ZA,ZAF,South Africa,UM
+SS,SSD,South Sudan,L
+ES,ESP,Spain,H
+LK,LKA,Sri Lanka,LM
+KN,KNA,St. Kitts and Nevis,H
+LC,LCA,St. Lucia,UM
+MF,MAF,St. Martin (French part),H
+VC,VCT,St. Vincent and the Grenadines,UM
+SD,SDN,Sudan,L
+SR,SUR,Suriname,UM
+SE,SWE,Sweden,H
+CH,CHE,Switzerland,H
+SY,SYR,Syrian Arab Republic,L
+TJ,TJK,Tajikistan,L
+TZ,TZA,Tanzania,LM
+TH,THA,Thailand,UM
+TL,TLS,Timor-Leste,LM
+TG,TGO,Togo,L
+TO,TON,Tonga,UM
+TT,TTO,Trinidad and Tobago,H
+TN,TUN,Tunisia,LM
+TR,TUR,Türkiye,UM
+TM,TKM,Turkmenistan,UM
+TC,TCA,Turks and Caicos Islands,H
+TV,TUV,Tuvalu,UM
+UG,UGA,Uganda,L
+UA,UKR,Ukraine,LM
+AE,ARE,United Arab Emirates,H
+GB,GBR,United Kingdom,H
+US,USA,United States,H
+UY,URY,Uruguay,H
+UZ,UZB,Uzbekistan,LM
+VU,VUT,Vanuatu,LM
+VE,VEN,"Venezuela, RB",UM
+VN,VNM,Viet Nam,LM
+VI,VIR,Virgin Islands (U.S.),H
+PS,PSE,West Bank and Gaza,LM
+YE,YEM,"Yemen, Rep.",L
+ZM,ZMB,Zambia,LM
+ZW,ZWE,Zimbabwe,LM
