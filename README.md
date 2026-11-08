@@ -2,7 +2,8 @@
 
 Code for "Pandemic publishing fortified knowledge silos through expert dilution in COVID-19 science"
 (Sikdar, Krishna, Venturini, Charpignon, Kumar, Rinaldi, Tudisco, Fortunato, Majumder). It extends our
-earlier comment "What we should learn from pandemic publishing" (Nature Human Behaviour, 2024). We classify the authors of COVID-19 papers published in 2020-2022 as outbreak
+earlier comment "What we should learn from pandemic publishing" (Nature Human Behaviour, 2024),
+whose code is archived at https://doi.org/10.5281/zenodo.10368779. We classify the authors of COVID-19 papers published in 2020-2022 as outbreak
 scientists, bellwethers (established researchers from other fields) or newcomers, and compare team
 composition, venues, citations and collaboration across these groups. All data come from the May 2025
 OpenAlex snapshot.
