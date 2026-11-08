@@ -24,7 +24,7 @@ The `item*` prefixes in `analysis/` are the revision items that prompted each sc
 ## Setup
 
 Python 3.10 or later with the packages in `requirements.txt`. We ran the notebook in JupyterLab, not as a
-script (`read_parquet` and `peek_parquet` in `notebook_utils.py` call `display()`), and the regressions
+script (`read_parquet` in `notebook_utils.py` calls `display()`), and the regressions
 with `uv run --with pyfixest --with pandas --with pyarrow python <script>`. The SQL scripts need the duckdb
 CLI. The figures need pdflatex with pgfplots, pgfplotstable, booktabs and opencolor.
 
@@ -43,11 +43,11 @@ export OPENALEX_MAILTO=you@example.org                         # used in OpenAle
 Unpack the deposit's `data/` into `data/` and its `analysis/` files into `analysis/`, then run the scripts
 from inside `analysis/`. Every script marked "deposit" below runs without the snapshot.
 
-In the notebook, run the setup cells and the first cell under `### Filter the works table` (it defines
-`work_types`), then skip the cells that read `parq_path`: the preprocessing sections, the `Citation Analysis`
-section, the venue pull for Fig 4 and some revision cells. Those need the full snapshot and about 60 GB of
-RAM. Everything else reads the deposited parquets; `covid_works_ow.parquet` already holds the author classes
-and the citation counts.
+In the notebook, run the Setup section and the first code cell of Preprocessing (it defines `work_types`),
+then skip the two sections marked "needs the snapshot" (Preprocessing and Citation counts) and the cells that
+read `parq_path` in the Fig 4 section and the revision analyses. Those need the full snapshot and about 60 GB
+of RAM. Everything else reads the deposited parquets; `covid_works_ow.parquet` already holds the author
+classes and the citation counts.
 
 Scripts marked "snapshot" read the full OpenAlex snapshot. OpenAlex does not keep old snapshots, so the May
 2025 release may no longer be available, and a newer one gives slightly different numbers. Their outputs are

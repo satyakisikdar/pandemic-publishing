@@ -5,8 +5,7 @@ pyarrow
 tqdm
 plotly
 seaborn
-networkx
-python-box
+matplotlib
 # Regressions (fe_models.py, fe_robust.py, item19_fe.py)
 pyfixest
 # SQL scripts need the duckdb CLI: https://duckdb.org/docs/installation
